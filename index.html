@@ -3,20 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Neon Play Buttons</title>
+    <title>Neon Buttons</title>
     <style>
-        body {
-            background-color: black;
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000; /* Optional: only if you want a dark background */
         }
-        
+
+        .play-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
         .play-button {
-            font-size: 24px;
+            font-size: 48px;
             cursor: pointer;
             border: none;
             background: none;
             color: white;
             text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
-            animation: pulse 2s infinite;
+            transition: all 0.2s ease;
+            animation: pulse 2s infinite alternate;
         }
 
         @keyframes pulse {
@@ -37,10 +50,7 @@
     </style>
 </head>
 <body>
-    <main class="container">
-        <div class="grid">
-            <section>
-                <div>
+    <div class="play-buttons">
                     <button class="play-button red" onclick="togglePlay(this, 'audio1')">▷</button>
                     <audio id="audio1" src="audio/uno.mp3"></audio>
                     <button class="play-button orange" onclick="togglePlay(this, 'audio2')">▷</button>
@@ -53,10 +63,7 @@
                     <audio id="audio5" src="audio/cinco.mp3"></audio>
                     <button class="play-button violet" onclick="togglePlay(this, 'audio6')">▷</button>
                     <audio id="audio6" src="audio/seis.mp3"></audio>
-                </div>
-            </section>
-        </div>
-    </main>
+    </div>
     <script>
         function togglePlay(btn, audioId) {
             var audio = document.getElementById(audioId);
